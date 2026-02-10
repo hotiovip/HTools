@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "d": "minecraft:diamond",
+    "g": "minecraft:golden_pickaxe"
+  },
+  "pattern": [
+    " d ",
+    "dgd"
+  ],
+  "result": {
+    "count": 1,
+    "id": "htools:diamond_golden_pickaxe"
+  }
+}
