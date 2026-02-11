@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "htools:item/vein_miner_upgrade_smithing_template"
+  }
+}
