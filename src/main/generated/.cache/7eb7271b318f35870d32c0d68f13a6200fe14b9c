@@ -1,3 +1,5 @@
 // 1.21.11	-999999999-01-01T00:00:00	HTools/HToolsRecipeProvider
-e50fc2fb57a1c363c56c7a5f7888f3ebec7b9288 data/htools/advancement/recipes/misc/diamond_golden_pickaxe.json
-288895f17e6339ad974b3fb16cf0f02f4fcfa554 data/htools/recipe/diamond_golden_pickaxe.json
+e50fc2fb57a1c363c56c7a5f7888f3ebec7b9288 data/htools/advancement/recipes/tools/diamond_golden_pickaxe.json
+eb3ae49c6abe14509dcad29a894631883385fc8e data/htools/advancement/recipes/tools/netherite_diamond_golden_pickaxe.json
+a09bb84aa559c240afe284fb32718fb8a64c8bff data/htools/recipe/diamond_golden_pickaxe.json
+eb0f079d07efc4b00e41ecb84ffc71f9fd1ab0f6 data/htools/recipe/netherite_diamond_golden_pickaxe.json
