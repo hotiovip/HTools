@@ -29,6 +29,7 @@ public class HToolsRecipeProvider extends FabricRecipeProvider {
             public void buildRecipes() {
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
+                // Diamond golden pickaxe
                 shaped(RecipeCategory.TOOLS, HToolsItems.DIAMOND_GOLDEN_PICKAXE, 1)
                         .pattern(" d ")
                         .pattern("dgd")
@@ -39,6 +40,7 @@ public class HToolsRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND))
                         .save(output);
 
+                // Netherite diamond golden pickaxe
                 smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
                         Ingredient.of(HToolsItems.DIAMOND_GOLDEN_PICKAXE),
                         Ingredient.of(Items.NETHERITE_INGOT),
@@ -47,6 +49,19 @@ public class HToolsRecipeProvider extends FabricRecipeProvider {
                         .unlocks(getHasName(Items.NETHERITE_INGOT), has(Items.NETHERITE_INGOT))
                         .unlocks(getHasName(HToolsItems.DIAMOND_GOLDEN_PICKAXE), has(HToolsItems.DIAMOND_GOLDEN_PICKAXE))
                         .save(output, "netherite_diamond_golden_pickaxe");
+
+                //TODO: Add vein miner upgrade smithing template recipe
+
+
+                // Vein miner pickaxe
+                smithing(Ingredient.of(HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE),
+                        Ingredient.of(HToolsItems.NETHERITE_DIAMOND_GOLDEN_PICKAXE),
+                        Ingredient.of(Items.NETHERITE_INGOT),
+                        RecipeCategory.TOOLS,
+                        HToolsItems.VEIN_MINER_PICKAXE)
+                        .unlocks(getHasName(Items.NETHERITE_INGOT), has(Items.NETHERITE_INGOT))
+                        .unlocks(getHasName(HToolsItems.NETHERITE_DIAMOND_GOLDEN_PICKAXE), has(HToolsItems.NETHERITE_DIAMOND_GOLDEN_PICKAXE))
+                        .save(output, "vein_miner_pickaxe");
             }
         };
     }

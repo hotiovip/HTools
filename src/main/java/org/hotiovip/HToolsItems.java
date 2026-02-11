@@ -4,16 +4,16 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.*;
 import org.hotiovip.item.VeinMinerPickaxe;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.function.Function;
 
 //TODO: ADD REPAIR TAGS TO CUSTOM INGOTS TO MAKE PICKAXES REPAIRABLE
@@ -50,6 +50,33 @@ public class HToolsItems {
             new Item.Properties().pickaxe(NETHERITE_DIAMOND_GOLDEN_TOOL_MATERIAL, 1.0F, -2.8F)
     );
 
+    // VEIN MINER SMITHING TEMPLATE
+    private static List<Identifier> createVeinMinerUpgradeIconList() {
+        return List.of(
+                Identifier.withDefaultNamespace("container/slot/pickaxe")
+        );
+    }
+    private static List<Identifier> createVeinMinerUpgradeMaterialList() {
+        return List.of(
+                Identifier.withDefaultNamespace("container/slot/ingot")
+        );
+    }
+    private static SmithingTemplateItem createVeinMinerUpgradeTemplate(Item.Properties properties) {
+        return new SmithingTemplateItem(
+                Component.translatable("item.htools.vein_template.applies_to"),
+                Component.translatable("item.htools.vein_template.ingredients"),
+                Component.translatable("item.htools.vein_template.base_slot"),
+                Component.translatable("item.htools.vein_template.additions_slot"),
+                createVeinMinerUpgradeIconList(),
+                createVeinMinerUpgradeMaterialList(),
+                properties
+        );
+    }
+    public static final Item VEIN_MINER_UPGRADE_SMITHING_TEMPLATE = register(
+            "vein_miner_upgrade_smithing_template",
+            HToolsItems::createVeinMinerUpgradeTemplate,
+            new Item.Properties().rarity(Rarity.RARE));
+
     // VEIN MINER PICKAXE
     public static final TagKey<@NotNull Item> REPAIRS_VEIN_MINER_TOOLS = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(HTools.MOD_ID, "repairs_vein_miner_tools"));
     public static final ToolMaterial VEIN_MINER_TOOL_MATERIAL = new ToolMaterial(
@@ -67,7 +94,6 @@ public class HToolsItems {
     );
 
 
-
     public static <GenericItem extends Item> GenericItem register(String name, Function<Item.Properties, GenericItem> itemFactory, Item.Properties settings) {
         // Create the item key.
         ResourceKey<@NotNull Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(HTools.MOD_ID, name));
@@ -83,12 +109,18 @@ public class HToolsItems {
 
     public static void initialize() {
         // Add items to creative inventory
+        // DIAMOND GOLDEN PICKAXE
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
                 .register((itemGroup) -> itemGroup.accept(DIAMOND_GOLDEN_PICKAXE));
 
+        // NETHERITE DIAMOND GOLDEN PICKAXE
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
                 .register((itemGroup) -> itemGroup.accept(NETHERITE_DIAMOND_GOLDEN_PICKAXE));
 
+        // VEIN MINER SMITHING TEMPLATE
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
+                .register((itemGroup) -> itemGroup.accept(VEIN_MINER_UPGRADE_SMITHING_TEMPLATE));
+        // VEIN MINER PICKAXE
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
                 .register((itemGroup) -> itemGroup.accept(VEIN_MINER_PICKAXE));
     }

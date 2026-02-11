@@ -1,4 +1,10 @@
 {
   "item.htools.diamond_golden_pickaxe": "Diamond Plated Golden Pickaxe",
-  "item.htools.netherite_diamond_golden_pickaxe": "Netherite Diamond Plated Golden Pickaxe"
+  "item.htools.netherite_diamond_golden_pickaxe": "Netherite Diamond Plated Golden Pickaxe",
+  "item.htools.vein_miner_upgrade_smithing_template": "Vein Miner Upgrade Smithing Template",
+  "item.htools.vein_template.applies_to": "§9Netherite Diamond Plated Golden Pickaxe",
+  "item.htools.vein_template.ingredients": "§9Netherite Ingot",
+  "item.htools.vein_template.base_slot": "Add Netherite Diamond Plated Golden Pickaxe",
+  "item.htools.vein_template.additions_slot": "Add Netherite Ingot",
+  "item.htools.vein_miner_pickaxe": "Vein Miner Pickaxe"
 }
