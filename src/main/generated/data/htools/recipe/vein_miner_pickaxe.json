@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:netherite_ingot",
+  "base": "htools:netherite_diamond_golden_pickaxe",
+  "result": {
+    "id": "htools:vein_miner_pickaxe"
+  },
+  "template": "htools:vein_miner_upgrade_smithing_template"
+}
