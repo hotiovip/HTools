@@ -1,0 +1,12 @@
+{
+  "item.htools.diamond_gold_ingot": "Lingotto d'Oro Diamantato",
+  "item.htools.netherite_diamond_gold_ingot": "Lingotto d'Oro Diamantato di Netherite",
+  "item.htools.diamond_golden_pickaxe": "Piccone d'Oro Placcato di Diamante",
+  "item.htools.netherite_diamond_golden_pickaxe": "Piccone d'Oro Placcato di Diamante e Netherite",
+  "item.htools.vein_miner_upgrade_smithing_template": "Modello di Forgiatura per Potenziamento Vein Miner",
+  "item.htools.vein_template.applies_to": "§9Piccone d'Oro Placcato di Diamante e Netherite",
+  "item.htools.vein_template.ingredients": "§9Lingotto di Netherite",
+  "item.htools.vein_template.base_slot": "Aggiungi Piccone d'Oro Placcato di Diamante e Netherite",
+  "item.htools.vein_template.additions_slot": "Aggiungi Lingotto di Netherite",
+  "item.htools.vein_miner_pickaxe": "Piccone Vein Miner"
+}

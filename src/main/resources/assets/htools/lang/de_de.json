@@ -1,0 +1,12 @@
+{
+  "item.htools.diamond_gold_ingot": "Diamant-Goldbarren",
+  "item.htools.netherite_diamond_gold_ingot": "Netherit-Diamant-Goldbarren",
+  "item.htools.diamond_golden_pickaxe": "Diamantbeschichtete Goldspitzhacke",
+  "item.htools.netherite_diamond_golden_pickaxe": "Netherit-Diamantbeschichtete Goldspitzhacke",
+  "item.htools.vein_miner_upgrade_smithing_template": "Vein-Miner-Verbesserung",
+  "item.htools.vein_template.applies_to": "§9Netherit-Diamantbeschichtete Goldspitzhacke",
+  "item.htools.vein_template.ingredients": "§9Netheritbarren",
+  "item.htools.vein_template.base_slot": "Netherit-Diamantbeschichtete Goldspitzhacke hinzufügen",
+  "item.htools.vein_template.additions_slot": "Netheritbarren hinzufügen",
+  "item.htools.vein_miner_pickaxe": "Vein-Miner-Spitzhacke"
+}
