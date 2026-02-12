@@ -137,7 +137,7 @@ public class HToolsChestLootTableProvider extends SimpleFabricLootTableProvider 
                         .setBonusRolls(ConstantValue.exactly(0.0f))
                         .setRolls(ConstantValue.exactly(1.0f))
                         .add(EmptyLootItem.emptyItem()
-                                .setWeight(19))
+                                .setWeight(1))
                         .add(LootItem.lootTableItem(HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE)
                                 .setWeight(1)
                                 .setQuality(2))     // Bonus rolls for Looting
