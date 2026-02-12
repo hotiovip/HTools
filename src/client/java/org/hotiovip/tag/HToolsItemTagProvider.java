@@ -25,5 +25,14 @@ public class HToolsItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(HToolsItems.NETHERITE_DIAMOND_GOLDEN_PICKAXE)
                 .add(HToolsItems.VEIN_MINER_PICKAXE)
                 .setReplace(false);
+
+        valueLookupBuilder(HToolsItems.REPAIRS_DIAMOND_GOLDEN_TOOLS)
+                .add(HToolsItems.DIAMOND_GOLD_INGOT);
+
+        valueLookupBuilder(HToolsItems.REPAIRS_NETHERITE_DIAMOND_GOLDEN_TOOLS)
+                .add(HToolsItems.NETHERITE_DIAMOND_GOLD_INGOT);
+
+        valueLookupBuilder(HToolsItems.REPAIRS_VEIN_MINER_TOOLS)
+                .add(HToolsItems.NETHERITE_DIAMOND_GOLD_INGOT);
     }
 }
