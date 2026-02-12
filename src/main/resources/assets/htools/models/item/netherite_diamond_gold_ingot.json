@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "htools:item/netherite_diamond_gold_ingot"
+  }
+}

@@ -16,41 +16,18 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.function.Function;
 
-//TODO: ADD REPAIR TAGS TO CUSTOM INGOTS TO MAKE PICKAXES REPAIRABLE
 public class HToolsItems {
-    // DIAMOND GOLDEN PICKAXE
-    public static final TagKey<@NotNull Item> REPAIRS_DIAMOND_GOLDEN_TOOLS = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(HTools.MOD_ID, "repairs_diamond_golden_tools"));
-    public static final ToolMaterial DIAMOND_GOLDEN_TOOL_MATERIAL = new ToolMaterial(
-            BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
-            ToolMaterial.DIAMOND.durability(),
-            ToolMaterial.GOLD.speed(),
-            ToolMaterial.GOLD.attackDamageBonus(),
-            ToolMaterial.GOLD.enchantmentValue(),
-            REPAIRS_DIAMOND_GOLDEN_TOOLS
-    );
-    public static final Item DIAMOND_GOLDEN_PICKAXE = register(
-            "diamond_golden_pickaxe",
+    // Diamond gold ingot
+    public static final Item DIAMOND_GOLD_INGOT = register(
+            "diamond_gold_ingot",
             Item::new,
-            new Item.Properties().pickaxe(DIAMOND_GOLDEN_TOOL_MATERIAL, 1.0F, -2.8F)
-    );
-
-    // NETHERITE DIAMOND GOLDEN PICKAXE
-    public static final TagKey<@NotNull Item> REPAIRS_NETHERITE_DIAMOND_GOLDEN_TOOLS = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(HTools.MOD_ID, "repairs_netherite_diamond_golden_tools"));
-    public static final ToolMaterial NETHERITE_DIAMOND_GOLDEN_TOOL_MATERIAL = new ToolMaterial(
-            BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
-            ToolMaterial.NETHERITE.durability(),
-            ToolMaterial.GOLD.speed(),
-            ToolMaterial.GOLD.attackDamageBonus(),
-            ToolMaterial.GOLD.enchantmentValue(),
-            REPAIRS_NETHERITE_DIAMOND_GOLDEN_TOOLS
-    );
-    public static final Item NETHERITE_DIAMOND_GOLDEN_PICKAXE = register(
-            "netherite_diamond_golden_pickaxe",
+            new Item.Properties());
+    // Netherite diamond gold ingot
+    public static final Item NETHERITE_DIAMOND_GOLD_INGOT = register(
+            "netherite_diamond_gold_ingot",
             Item::new,
-            new Item.Properties().pickaxe(NETHERITE_DIAMOND_GOLDEN_TOOL_MATERIAL, 1.0F, -2.8F)
-    );
-
-    // VEIN MINER SMITHING TEMPLATE
+            new Item.Properties());
+    // Vein miner smithing template
     private static List<Identifier> createVeinMinerUpgradeIconList() {
         return List.of(
                 Identifier.withDefaultNamespace("container/slot/pickaxe")
@@ -77,7 +54,40 @@ public class HToolsItems {
             HToolsItems::createVeinMinerUpgradeTemplate,
             new Item.Properties().rarity(Rarity.RARE));
 
-    // VEIN MINER PICKAXE
+
+    // Diamond golden pickaxe
+    public static final TagKey<@NotNull Item> REPAIRS_DIAMOND_GOLDEN_TOOLS = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(HTools.MOD_ID, "repairs_diamond_golden_tools"));
+    public static final ToolMaterial DIAMOND_GOLDEN_TOOL_MATERIAL = new ToolMaterial(
+            BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
+            ToolMaterial.DIAMOND.durability(),
+            ToolMaterial.GOLD.speed(),
+            ToolMaterial.GOLD.attackDamageBonus(),
+            ToolMaterial.GOLD.enchantmentValue(),
+            REPAIRS_DIAMOND_GOLDEN_TOOLS
+    );
+    public static final Item DIAMOND_GOLDEN_PICKAXE = register(
+            "diamond_golden_pickaxe",
+            Item::new,
+            new Item.Properties().pickaxe(DIAMOND_GOLDEN_TOOL_MATERIAL, 1.0F, -2.8F)
+    );
+
+    // Netherite diamond golden pickaxe
+    public static final TagKey<@NotNull Item> REPAIRS_NETHERITE_DIAMOND_GOLDEN_TOOLS = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(HTools.MOD_ID, "repairs_netherite_diamond_golden_tools"));
+    public static final ToolMaterial NETHERITE_DIAMOND_GOLDEN_TOOL_MATERIAL = new ToolMaterial(
+            BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
+            ToolMaterial.NETHERITE.durability(),
+            ToolMaterial.GOLD.speed(),
+            ToolMaterial.GOLD.attackDamageBonus(),
+            ToolMaterial.GOLD.enchantmentValue(),
+            REPAIRS_NETHERITE_DIAMOND_GOLDEN_TOOLS
+    );
+    public static final Item NETHERITE_DIAMOND_GOLDEN_PICKAXE = register(
+            "netherite_diamond_golden_pickaxe",
+            Item::new,
+            new Item.Properties().pickaxe(NETHERITE_DIAMOND_GOLDEN_TOOL_MATERIAL, 1.0F, -2.8F)
+    );
+
+    // vein miner pickaxe
     public static final TagKey<@NotNull Item> REPAIRS_VEIN_MINER_TOOLS = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(HTools.MOD_ID, "repairs_vein_miner_tools"));
     public static final ToolMaterial VEIN_MINER_TOOL_MATERIAL = new ToolMaterial(
             BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
@@ -109,17 +119,23 @@ public class HToolsItems {
 
     public static void initialize() {
         // Add items to creative inventory
-        // DIAMOND GOLDEN PICKAXE
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
-                .register((itemGroup) -> itemGroup.accept(DIAMOND_GOLDEN_PICKAXE));
 
-        // NETHERITE DIAMOND GOLDEN PICKAXE
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
-                .register((itemGroup) -> itemGroup.accept(NETHERITE_DIAMOND_GOLDEN_PICKAXE));
-
+        // DIAMOND GOLD INGOT
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
+                .register((itemGroup) -> itemGroup.accept(DIAMOND_GOLD_INGOT));
+        // NETHERITE DIAMOND GOLD INGOT
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
+                .register((itemGroup) -> itemGroup.accept(NETHERITE_DIAMOND_GOLD_INGOT));
         // VEIN MINER SMITHING TEMPLATE
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
                 .register((itemGroup) -> itemGroup.accept(VEIN_MINER_UPGRADE_SMITHING_TEMPLATE));
+
+        // DIAMOND GOLDEN PICKAXE
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
+                .register((itemGroup) -> itemGroup.accept(DIAMOND_GOLDEN_PICKAXE));
+        // NETHERITE DIAMOND GOLDEN PICKAXE
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
+                .register((itemGroup) -> itemGroup.accept(NETHERITE_DIAMOND_GOLDEN_PICKAXE));
         // VEIN MINER PICKAXE
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
                 .register((itemGroup) -> itemGroup.accept(VEIN_MINER_PICKAXE));

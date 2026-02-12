@@ -28,49 +28,74 @@ public class HToolsRecipeProvider extends FabricRecipeProvider {
         return new RecipeProvider(registryLookup, exporter) {
             @Override
             public void buildRecipes() {
-                HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
+                HolderLookup.RegistryLookup<@NotNull Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
-                // Diamond golden pickaxe
-                shaped(RecipeCategory.TOOLS, HToolsItems.DIAMOND_GOLDEN_PICKAXE, 1)
-                        .pattern(" d ")
-                        .pattern("dgd")
+                // Diamond gold ingot
+                shaped(RecipeCategory.MISC, HToolsItems.DIAMOND_GOLD_INGOT, 1)
+                        .pattern("dg")
                         .define('d', Items.DIAMOND)
-                        .define('g', Items.GOLDEN_PICKAXE)
-                        //.group("multi_bench")
-                        .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                        .define('g', Items.GOLD_INGOT)
                         .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND))
+                        .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                         .save(output);
-
-                // Netherite diamond golden pickaxe
-                smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
-                        Ingredient.of(HToolsItems.DIAMOND_GOLDEN_PICKAXE),
-                        Ingredient.of(Items.NETHERITE_INGOT),
-                        RecipeCategory.TOOLS,
-                        HToolsItems.NETHERITE_DIAMOND_GOLDEN_PICKAXE)
-                        .unlocks(getHasName(Items.NETHERITE_INGOT), has(Items.NETHERITE_INGOT))
-                        .unlocks(getHasName(HToolsItems.DIAMOND_GOLDEN_PICKAXE), has(HToolsItems.DIAMOND_GOLDEN_PICKAXE))
-                        .save(output, "netherite_diamond_golden_pickaxe");
-
+                // Netherite diamond gold ingot
+                shaped(RecipeCategory.MISC, HToolsItems.NETHERITE_DIAMOND_GOLD_INGOT, 1)
+                        .pattern("dgn")
+                        .define('d', Items.DIAMOND)
+                        .define('g', Items.GOLD_INGOT)
+                        .define('n', Items.NETHERITE_INGOT)
+                        .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND))
+                        .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                        .unlockedBy(getHasName(Items.NETHERITE_INGOT), has(Items.NETHERITE_INGOT))
+                        .save(output);
                 // Vein miner upgrade smithing template
                 shaped(RecipeCategory.MISC, HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE, 2)
-                        .pattern("ntn")
-                        .pattern("nbn")
-                        .pattern("nnn")
-                        .define('n', Items.NETHERITE_INGOT)
+                        .pattern("iti")
+                        .pattern("ini")
+                        .pattern("iii")
+                        .define('i', HToolsItems.NETHERITE_DIAMOND_GOLD_INGOT)
                         .define('t', HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE)
-                        .define('b', Items.NETHERRACK)
+                        .define('n', Items.NETHERRACK)
                         .unlockedBy(getHasName(Items.NETHERITE_INGOT), has(Items.NETHERITE_INGOT))
                         .unlockedBy(getHasName(Items.NETHERRACK), has(Items.NETHERRACK))
                         .unlockedBy(getHasName(HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE), has(HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE))
                         .save(output);
 
+                // Diamond golden pickaxe
+                shaped(RecipeCategory.TOOLS, HToolsItems.DIAMOND_GOLDEN_PICKAXE, 1)
+                        .pattern("iii")
+                        .pattern(" s ")
+                        .pattern(" s ")
+                        .define('i', HToolsItems.DIAMOND_GOLD_INGOT)
+                        .define('s', Items.STICK)
+                        .unlockedBy(getHasName(HToolsItems.DIAMOND_GOLD_INGOT), has(HToolsItems.DIAMOND_GOLD_INGOT))
+                        .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                        .save(output);
+                // Netherite diamond golden pickaxe
+//                smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+//                        Ingredient.of(HToolsItems.DIAMOND_GOLDEN_PICKAXE),
+//                        Ingredient.of(Items.NETHERITE_INGOT),
+//                        RecipeCategory.TOOLS,
+//                        HToolsItems.NETHERITE_DIAMOND_GOLDEN_PICKAXE)
+//                        .unlocks(getHasName(Items.NETHERITE_INGOT), has(Items.NETHERITE_INGOT))
+//                        .unlocks(getHasName(HToolsItems.DIAMOND_GOLDEN_PICKAXE), has(HToolsItems.DIAMOND_GOLDEN_PICKAXE))
+//                        .save(output, "netherite_diamond_golden_pickaxe");
+                shaped(RecipeCategory.TOOLS, HToolsItems.NETHERITE_DIAMOND_GOLDEN_PICKAXE, 1)
+                        .pattern("iii")
+                        .pattern(" s ")
+                        .pattern(" s ")
+                        .define('i', HToolsItems.NETHERITE_DIAMOND_GOLD_INGOT)
+                        .define('s', Items.STICK)
+                        .unlockedBy(getHasName(HToolsItems.NETHERITE_DIAMOND_GOLD_INGOT), has(HToolsItems.NETHERITE_DIAMOND_GOLD_INGOT))
+                        .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                        .save(output);
                 // Vein miner pickaxe
                 smithing(Ingredient.of(HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE),
                         Ingredient.of(HToolsItems.NETHERITE_DIAMOND_GOLDEN_PICKAXE),
-                        Ingredient.of(Items.NETHERITE_INGOT),
+                        Ingredient.of(HToolsItems.NETHERITE_DIAMOND_GOLD_INGOT),
                         RecipeCategory.TOOLS,
                         HToolsItems.VEIN_MINER_PICKAXE)
-                        .unlocks(getHasName(Items.NETHERITE_INGOT), has(Items.NETHERITE_INGOT))
+                        .unlocks(getHasName(HToolsItems.NETHERITE_DIAMOND_GOLD_INGOT), has(HToolsItems.NETHERITE_DIAMOND_GOLD_INGOT))
                         .unlocks(getHasName(HToolsItems.NETHERITE_DIAMOND_GOLDEN_PICKAXE), has(HToolsItems.NETHERITE_DIAMOND_GOLDEN_PICKAXE))
                         .save(output, "vein_miner_pickaxe");
             }
