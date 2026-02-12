@@ -46,14 +46,21 @@ public class VeinMinerPickaxe extends Item {
 
                     // Destroy each block and damage the tool
                     for (BlockPos attachedBlock : attachedBlocks) {
-                        level.destroyBlock(attachedBlock, true, livingEntity);
+                        if (blockPos.equals(attachedBlock)) continue; // Skip this one as it was handled by super.mineBlock above
+
+                        // Drop the correct items based on enchantments (respects Silk Touch, Fortune, etc.)
+                        BlockState state = level.getBlockState(attachedBlock);
+                        Block.dropResources(state, level, attachedBlock, level.getBlockEntity(attachedBlock), livingEntity, itemStack);
+
+                        // Remove the block without dropping items (we already handled drops above)
+                        level.removeBlock(attachedBlock, false);
 
                         // Break early if tool is about to break
                         if (itemStack.getDamageValue() >= itemStack.getMaxDamage() - 1) {
                             break;
                         }
                     }
-                    if (!attachedBlocks.isEmpty()) {
+                    if (attachedBlocks.size() > 1) { // Only damage pickaxe if it broke more then 1 block
                         // Apply durability damage for each block broken other then the first one as super.mineBlock already applied 1 damage
                         itemStack.hurtAndBreak(tool.damagePerBlock() * (attachedBlocks.size() - 1), livingEntity, EquipmentSlot.MAINHAND);
                     }
