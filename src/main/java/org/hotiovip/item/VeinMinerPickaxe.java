@@ -1,12 +1,15 @@
 package org.hotiovip.item;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,27 +29,42 @@ public class VeinMinerPickaxe extends Item {
 
     @Override
     public boolean mineBlock(@NotNull ItemStack itemStack, @NotNull Level level, @NotNull BlockState blockState, @NotNull BlockPos blockPos, @NotNull LivingEntity livingEntity) {
-        Identifier cOres = Identifier.tryBuild("c", "ores");
-        if (cOres != null) {
-            TagKey<@NotNull Block> cOresTag = TagKey.create(Registries.BLOCK, cOres);
+        if (super.mineBlock(itemStack, level, blockState, blockPos, livingEntity)) {
+            Tool tool = itemStack.get(DataComponents.TOOL);
+            if (tool == null) return false;
 
-            if (blockState.is(cOresTag)) {
-                // Reset HashMap
-                visited.clear();
+            Identifier cOres = Identifier.tryBuild("c", "ores");
+            if (cOres != null) {
+                TagKey<@NotNull Block> cOresTag = TagKey.create(Registries.BLOCK, cOres);
 
-                // Search for the same ore blocks attached to them
-                List<BlockPos> attachedBlocks = getAttachedBlocks(level, blockState, blockPos);
-                attachedBlocks.forEach(attachedBlock -> {
-                    HTools.LOGGER.info(level.getBlockState(attachedBlock).toString());
-                });
+                if (blockState.is(cOresTag)) {
+                    // Reset HashMap
+                    visited.clear();
 
-                // Destroy each of them
-                attachedBlocks.forEach(attachedBlock -> {
-                    level.destroyBlock(attachedBlock, true, livingEntity);
-                });
+                    // Search for the same ore blocks attached to them
+                    List<BlockPos> attachedBlocks = getAttachedBlocks(level, blockState, blockPos);
+
+                    // Destroy each block and damage the tool
+                    for (BlockPos attachedBlock : attachedBlocks) {
+                        level.destroyBlock(attachedBlock, true, livingEntity);
+
+                        // Break early if tool is about to break
+                        if (itemStack.getDamageValue() >= itemStack.getMaxDamage() - 1) {
+                            break;
+                        }
+                    }
+                    if (!attachedBlocks.isEmpty()) {
+                        // Apply durability damage for each block broken other then the first one as super.mineBlock already applied 1 damage
+                        itemStack.hurtAndBreak(tool.damagePerBlock() * (attachedBlocks.size() - 1), livingEntity, EquipmentSlot.MAINHAND);
+                    }
+
+                }
             }
+
+            return true;
         }
-        return true;
+
+        return false;
     }
 
     private List<BlockPos> getAttachedBlocks(Level level, BlockState sourceState, BlockPos startPos) {
@@ -87,4 +105,6 @@ public class VeinMinerPickaxe extends Item {
     private boolean checkBlockPos(Level level, BlockState sourceState, BlockPos blockPos) {
         return level.getBlockState(blockPos).is(sourceState.getBlock());
     }
+
+
 }
