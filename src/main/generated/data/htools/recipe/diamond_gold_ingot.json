@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "d": "minecraft:diamond",
+    "g": "minecraft:gold_ingot"
+  },
+  "pattern": [
+    "dg"
+  ],
+  "result": {
+    "count": 1,
+    "id": "htools:diamond_gold_ingot"
+  }
+}

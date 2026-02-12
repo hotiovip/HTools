@@ -2,12 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "d": "minecraft:diamond",
-    "g": "minecraft:golden_pickaxe"
+    "i": "htools:diamond_gold_ingot",
+    "s": "minecraft:stick"
   },
   "pattern": [
-    " d ",
-    "dgd"
+    "iii",
+    " s ",
+    " s "
   ],
   "result": {
     "count": 1,

@@ -2,14 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "b": "minecraft:netherrack",
-    "n": "minecraft:netherite_ingot",
+    "i": "htools:netherite_diamond_gold_ingot",
+    "n": "minecraft:netherrack",
     "t": "htools:vein_miner_upgrade_smithing_template"
   },
   "pattern": [
-    "ntn",
-    "nbn",
-    "nnn"
+    "iti",
+    "ini",
+    "iii"
   ],
   "result": {
     "count": 2,

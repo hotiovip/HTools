@@ -1,0 +1,5 @@
+// 1.21.11	-999999999-01-01T00:00:00	HTools/Tags for minecraft:item
+d3add204f188ea8809a138b7f80d007847429f59 data/htools/tags/item/repairs_diamond_golden_tools.json
+31c319f24dd6a9f793215f5aa5750d596adf1ef8 data/htools/tags/item/repairs_netherite_diamond_golden_tools.json
+31c319f24dd6a9f793215f5aa5750d596adf1ef8 data/htools/tags/item/repairs_vein_miner_tools.json
+2dbb8de53fe05fd1a88fc45fa19817beecbca68a data/minecraft/tags/item/pickaxes.json

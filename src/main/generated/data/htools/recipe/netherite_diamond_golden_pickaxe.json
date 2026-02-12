@@ -1,9 +1,17 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": "minecraft:netherite_ingot",
-  "base": "htools:diamond_golden_pickaxe",
-  "result": {
-    "id": "htools:netherite_diamond_golden_pickaxe"
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "i": "htools:netherite_diamond_gold_ingot",
+    "s": "minecraft:stick"
   },
-  "template": "minecraft:netherite_upgrade_smithing_template"
+  "pattern": [
+    "iii",
+    " s ",
+    " s "
+  ],
+  "result": {
+    "count": 1,
+    "id": "htools:netherite_diamond_golden_pickaxe"
+  }
 }
