@@ -7,13 +7,16 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.hotiovip.HTools;
 import org.hotiovip.HToolsItems;
+import org.jetbrains.annotations.NotNull;
 
 import static net.minecraft.data.recipes.SmithingTransformRecipeBuilder.smithing;
 
@@ -23,7 +26,7 @@ public class HToolsRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    protected RecipeProvider createRecipeProvider(HolderLookup.Provider registryLookup, RecipeOutput exporter) {
+    protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.@NotNull Provider registryLookup, @NotNull RecipeOutput exporter) {
         return new RecipeProvider(registryLookup, exporter) {
             @Override
             public void buildRecipes() {
@@ -51,7 +54,6 @@ public class HToolsRecipeProvider extends FabricRecipeProvider {
                         .save(output, "netherite_diamond_golden_pickaxe");
 
                 //TODO: Add vein miner upgrade smithing template recipe
-
 
                 // Vein miner pickaxe
                 smithing(Ingredient.of(HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE),
