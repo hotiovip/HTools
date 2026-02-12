@@ -81,16 +81,16 @@ public class HToolsItems {
     public static final TagKey<@NotNull Item> REPAIRS_VEIN_MINER_TOOLS = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(HTools.MOD_ID, "repairs_vein_miner_tools"));
     public static final ToolMaterial VEIN_MINER_TOOL_MATERIAL = new ToolMaterial(
             BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
-            ToolMaterial.NETHERITE.durability(),
-            ToolMaterial.GOLD.speed(),
-            ToolMaterial.GOLD.attackDamageBonus(),
-            ToolMaterial.GOLD.enchantmentValue(),
+            4062,
+            15.0F,
+            5.0F,
+            30,
             REPAIRS_VEIN_MINER_TOOLS
     );
     public static final Item VEIN_MINER_PICKAXE = register(
             "vein_miner_pickaxe",
             VeinMinerPickaxe::new,
-            new Item.Properties().pickaxe(VEIN_MINER_TOOL_MATERIAL, 1.0F, -2.8F)
+            new Item.Properties().pickaxe(VEIN_MINER_TOOL_MATERIAL, 1.0F, -2.0F)
     );
 
 
