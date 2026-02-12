@@ -7,14 +7,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.hotiovip.HTools;
 import org.hotiovip.HToolsItems;
 import org.jetbrains.annotations.NotNull;
 
@@ -53,7 +51,18 @@ public class HToolsRecipeProvider extends FabricRecipeProvider {
                         .unlocks(getHasName(HToolsItems.DIAMOND_GOLDEN_PICKAXE), has(HToolsItems.DIAMOND_GOLDEN_PICKAXE))
                         .save(output, "netherite_diamond_golden_pickaxe");
 
-                //TODO: Add vein miner upgrade smithing template recipe
+                // Vein miner upgrade smithing template
+                shaped(RecipeCategory.MISC, HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE, 2)
+                        .pattern("ntn")
+                        .pattern("nbn")
+                        .pattern("nnn")
+                        .define('n', Items.NETHERITE_INGOT)
+                        .define('t', HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE)
+                        .define('b', Items.NETHERRACK)
+                        .unlockedBy(getHasName(Items.NETHERITE_INGOT), has(Items.NETHERITE_INGOT))
+                        .unlockedBy(getHasName(Items.NETHERRACK), has(Items.NETHERRACK))
+                        .unlockedBy(getHasName(HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE), has(HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE))
+                        .save(output);
 
                 // Vein miner pickaxe
                 smithing(Ingredient.of(HToolsItems.VEIN_MINER_UPGRADE_SMITHING_TEMPLATE),
