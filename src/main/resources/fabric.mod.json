@@ -3,15 +3,15 @@
 	"id": "htools",
 	"version": "${version}",
 	"name": "HTools",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Adds end-game tools that expand on the original game's progression!",
 	"authors": [
-		"Me!"
+		"Hotiovip"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/mod/htools",
+		"sources": "https://github.com/hotiovip/HTools"
 	},
-	"license": "CC0-1.0",
+	"license": "All Rights Reserved",
 	"icon": "assets/htools/icon.png",
 	"environment": "*",
 	"entrypoints": {
